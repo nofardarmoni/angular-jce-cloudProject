@@ -1,0 +1,149 @@
+<div style="text-align: center; position: relative;
+height: 500px; background-size:cover; background-repeat: no-repeat; 
+background-image:url(https://www.state.gov/wp-content/uploads/2020/06/Audience_pages_jobs.jpg)">
+
+<br><br><br>
+<div style="width: 1200px; height: 380px; background-color: #ffffff8c;     border-radius: 20px;
+margin-left: auto; margin-right: auto; color: #000000;">
+<div style=" width: 1200px; color: #2b67e9; font-size: 70px; font-weight: 800; position: absolute;
+top: 170px;
+left: 50%;
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);"> 
+
+Start building your career  today!
+
+
+
+
+</div> 
+<br><br><br><br><br><br><br><br><br><br>
+<mat-form-field appearance="standard" style="width: 350px;" floatLabel="always">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search By Job Title" #input>
+</mat-form-field>
+</div>
+
+</div>
+
+
+<div style="background-image:url(https://www.sgshumanresources.com/wp-content/uploads/2016/10/nowhiring.gif); width: 500px; height: 200px; margin-right: auto; margin-left: auto; margin-top: -70px;">
+  s
+  
+  
+  </div>
+  <h2  style="text-align: center; font-size: 40px; color: #1f3b79; font-family:'Courier New', Courier, monospace;
+  margin: auto;
+  margin-top: 20px;
+  font-weight: 500;">
+Search for potential jobs in various industries
+<br>
+
+<mat-card  class="card-container" style="width: 1600px; margin: auto; margin-top: 30px;  border-radius: 0 ;
+background-color: #ffffff;
+border-top: 10px solid #f39ab4;
+border-right: 0px solid #dddcdc;">
+
+<div *ngIf = "internal_view">
+
+<button [disabled] = "false" mat-button (click)="router.navigate(['/application-form']);"   style="width: 150px; background-color: #e7912e; 
+margin-bottom: 20px; color: #ffffff; margin-right: 30px;  float: right;   border-radius: 1px; border: 1px solid #333c66; 
+
+" >
+ Global View
+</button> 
+
+<h1 style="font-weight: 400; font-size: 20px; color: #2b2b2b;margin-left: 40px;"> Job's Board </h1>
+
+
+
+<mat-divider style="width: 92%; margin-left: 50px; "></mat-divider><br>
+
+<button [disabled] = "false" mat-button (click)="router.navigate(['/application-form']);"   style="width: 100px; background-color: #ffffff; 
+margin-bottom: 20px; color: rgb(0, 0, 0); margin-left: 30px;     border-radius: 1px; border: 1px solid #333c66; 
+
+" >
+  Add New
+</button> 
+</div>
+
+<br>
+<div style="margin-left: 40px; font-size: 14px; text-align: left;" *ngIf = "!jobs">
+  Loading...
+  <mat-spinner  diameter="25"    > </mat-spinner>
+
+</div>
+
+<!-- GRID LIST -->       
+
+<mat-grid-list   cols="4" rowHeight="200px" *ngIf = "jobs" style="text-align: left;" >
+  <mat-grid-tile  *ngFor = "let job of jobs,  let i = index">
+
+      <mat-card style="margin: 10px; 
+                      padding: 0px; 
+                      width: 100%;
+                      height: 150px;"
+                      >
+
+        <mat-card-content matRipple (click)="goToJob(i);" style=" border-radius: 1px; ">
+                <mat-card-title style="font-weight: 500;
+                color: #000000; 
+                width: 335px; 
+                margin-top: 20px; 
+                margin-left: 20px; 
+                padding-bottom: 1px;
+                text-transform: capitalize;
+                font-size: 20px;" > 
+
+                {{job.job_name}}
+                
+               </mat-card-title>
+
+      <div style="margin-left: 200px;">
+
+                <mat-card-title style="font-weight: 300;
+                color: #000000; 
+                width: 335px; 
+                margin-top: -10px; 
+                margin-left: 20px; 
+                padding-bottom: 1px;
+                text-transform: capitalize;
+                font-size: 13px;" > 
+                <mat-icon style="color: #545475; font-size: 15px; margin-top: 5px;">place</mat-icon>
+
+
+
+                {{job.country.name}}
+                </mat-card-title>
+
+                <mat-card-title style="font-weight: 300;
+                color: #000000; 
+                width: 335px; 
+                margin-top: -10px; 
+                margin-left: 48px; 
+                padding-bottom: 1px;
+                text-transform: capitalize;
+                font-size: 13px;" > 
+
+                {{job.job_type}}
+                </mat-card-title>
+
+                <mat-card-title style="font-weight: 300;
+                color: #000000; 
+                width: 335px; 
+                margin-top: -10px; 
+                margin-left: 48px; 
+                padding-bottom: 1px;
+                text-transform: capitalize;
+                font-size: 13px;" > 
+                {{added_dates[i]}}
+                </mat-card-title>
+      </div>
+
+
+
+          </mat-card-content>
+      </mat-card>    
+  </mat-grid-tile>  
+</mat-grid-list> 
+</mat-card >

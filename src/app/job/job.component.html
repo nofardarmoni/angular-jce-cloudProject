@@ -1,0 +1,109 @@
+<mat-card  class="card-container" >
+
+        <h1 style="font-weight: 300;
+                   font-size: 25px; 
+                   color: #2b2b2b; 
+                   margin-left: 40px; 
+                   padding: 0px; 
+                   margin-bottom: 0px;
+                   text-transform: capitalize;"> 
+                   
+                   {{job.job_name}} 
+        </h1>
+
+        <h1 style="font-size: 11px; 
+                   color: #b3b3b9;  
+                   font-weight: 300; 
+                   margin-top: -5px; 
+                   padding: 0px; 
+                   margin: 0; 
+                   margin-left: 40px;">
+
+        position code: {{job.job_id}}
+        </h1>
+
+        <h1 style="font-size: 11px; 
+                   color: #b3b3b9;  
+                   font-weight: 300; 
+                   padding: 0px; margin: 0; 
+                   margin-left: 40px;
+                   margin-top: -10px; ">
+
+            posted at: {{added_at}}
+        </h1>
+
+        <mat-divider style="width: 92%; margin-left: 40px; "></mat-divider><br>
+
+
+        <div style="height: 600px; 
+                    background-color: #ffffff;">
+
+                <div style="width: 150px; height: 500px; 
+                            background-color: #f0f0f0;  
+                            float: left; 
+                            margin-left: 40px; 
+                            padding-left: 20px; 
+                            padding-top: 20px;">
+                    <br>
+
+
+                    <div style="color: #2b2b2b; font-size: 12px; font-weight: 400;">
+                        <mat-icon style="color: #545475; font-size: 15px; margin-top: 5px;">history</mat-icon>
+                        {{needed_at}}
+                    </div>
+                    <br>
+
+                    <div style="color: #2b2b2b; font-size: 12px; font-weight: 400; text-transform: capitalize;">
+                        <mat-icon style="color: #545475; font-size: 15px; margin-top: 5px; ">article</mat-icon>
+
+                        {{job.job_type}}
+                    </div>
+                    <br>
+
+
+                    <div style="color: #2b2b2b; font-size: 12px; font-weight: 400;">
+                        <mat-icon style="color: #545475; font-size: 15px; margin-top: 5px;">place</mat-icon>
+
+                        {{job.country.name}}
+                    </div>
+
+                </div>
+
+                <div style="margin-left: 250px; width: 550px;">
+                    <h1 style="font-size: 17px; color: #4e4e4e;  font-weight: 300; margin-top: -5px; padding: 0px; margin: 0;">
+                        Description
+                    </h1>
+
+                    <div style="font-size: 12px;">
+                    {{job.description}}
+                    </div>
+                    <br><br>
+
+                    <div>
+                        <h1 style="font-size: 17px; color: #4e4e4e;  font-weight: 300; margin-top: -5px; padding: 0px; margin: 0;">
+                            Requirements
+                        </h1>
+
+                <mat-list role="list" >
+
+                    <mat-list-item role="listitem" *ngFor="let requirement of requirements" style="height: 30px; font-size: 13px;"> 
+                        <mat-icon style="color: #545475; font-size: 15px; margin-top: 5px;">play_arrow</mat-icon>
+                        {{requirement.name}}
+                    </mat-list-item>
+                </mat-list>
+                </div>
+                </div>
+                <br>
+
+        </div>
+        <mat-divider style="width: 92%; margin-left: 40px; "></mat-divider><br>
+
+
+        <button [disabled] = "false" mat-button (click)="apply()"   style="width: 100px; background-color: #ffffff; 
+        margin-bottom: 20px; color: #000000; border-radius: 1px; border: 1px solid #333c66; margin-left: 400px;" >
+        Apply
+        </button> 
+        <br>
+
+
+</mat-card >

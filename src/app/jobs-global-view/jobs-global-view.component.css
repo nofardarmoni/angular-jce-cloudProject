@@ -1,0 +1,30 @@
+
+
+  .card-container{
+    width: 1350px;
+    height: 750px;
+    flex-direction: column;
+    border-radius: 0px;
+    position: relative;
+    background-color: #ffffff;
+    border-top: 10px solid #f39ab4;
+    border-right: 0px solid #dddcdc;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
+  stroke: #000000;
+  font-size: 12px;
+}
+
+.mat-card-content {
+  background-size:100% 100%;
+  cursor: pointer;
+  background-color: #ffffff2a;
+  border: 1px solid #f39ab4;
+  height: 150px;
+  width: 377px;
+}
+
+  

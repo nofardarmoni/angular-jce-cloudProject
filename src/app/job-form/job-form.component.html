@@ -1,0 +1,152 @@
+<div style="width: 100%; height: 100%;
+            background-color: #faf0f0;">
+
+    <div style="margin-left: auto; margin-right: auto;
+                width: 1400px; 
+                background-color: #00ffff00; 
+                top: 30px; 
+                position: relative;">
+
+        <mat-card class="card-container" >
+              <h1 style="font-weight: 400;
+                        font-size: 20px;
+                        color: #2b2b2b;
+                        margin-left: 40px;">
+                        
+                        New Job
+              </h1>
+
+              <mat-divider style="width: 92%; margin-left: 50px; "></mat-divider><br>
+              <br>
+                  <!-- JOB FORM -->       
+
+                  <form #registerForm = "ngForm" (ngSubmit) = "addJob()"  
+                        style="width: 1300px; margin-left: 80px; ">
+                      <div style=" margin-left: auto; margin-right: auto;">
+
+
+                        <div style="margin-left: auto; margin-right: auto; position:absolute; margin-left: 630px;">
+                          <mat-form-field appearance="outline" floatLabel="always" style="width: 570px;">
+                              <mat-label style="font-size: 17px;"> Department </mat-label>
+                                <mat-select   [(ngModel)] = "department" name = "department" required>
+                                <mat-option *ngFor="let department of departments" [value]="department">
+                                  {{department.name}}  
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            
+                          </div>
+
+                      
+
+                          <div >
+                              <mat-form-field appearance="outline" style="width: 570px;" floatLabel="always">
+                                  <mat-label style="font-size: 17px;">Job Title</mat-label>
+                                  <input matInput placeholder="please enter a job title "
+                                  [(ngModel)]= "job_name"
+                                  name = "job_name"
+                                  required
+                                  >
+                              </mat-form-field>
+              
+                          </div>    
+                          <div style="margin-left: auto; margin-right: auto;position:absolute; margin-left: 630px;">
+                            <mat-form-field appearance="outline" floatLabel="always" style="width: 570px;">
+                                <mat-label style="font-size: 17px;"> Location </mat-label>
+                                  <mat-select   [(ngModel)] = "country" name = "country" required>
+                                  <mat-option *ngFor="let country of countries" [value]="country">
+                                    {{country.name +"   "+country.code }}  
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              
+                            </div>
+                    
+                          <mat-form-field class="example-chip-list" appearance="outline" floatLabel="always" style="width: 570px;  position:absolute; margin-left: 630px; margin-top: 80px;" >
+                            <mat-label style="font-size: 17px;">Requirements </mat-label>
+                            <mat-chip-list s #chipList>
+                              <mat-chip s *ngFor="let requirement of requirements" (removed)="remove(requirement)">
+                                {{requirement.name}}
+                                <button matChipRemove>
+                                  <mat-icon>cancel</mat-icon>
+                                </button>
+                              </mat-chip>
+                              <input placeholder="add requirement / skill..."
+                                    [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    [matChipInputAddOnBlur]="addOnBlur"
+                                    (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                          </mat-form-field>
+            
+
+                                  <div>
+
+                                      <mat-form-field appearance="outline" style="width: 570px;"  floatLabel="always" hintLabel="Max 500 characters">
+                                          <mat-label style="font-size: 17px;">Description</mat-label>
+                                          <textarea matInput required [(ngModel)] = "description" name = "description" [maxLength]="600" rows="4" cols="40" placeholder="text" ></textarea>
+                                      </mat-form-field>
+
+                                  </div>    
+                                  <br>
+
+
+
+                  
+                          <div style="margin-left: auto; margin-right: auto;">
+                            <mat-form-field appearance="outline" floatLabel="always" style="width: 570px;">
+                                <mat-label style="font-size: 17px;"> Job Type </mat-label>
+                                  <mat-select   [(ngModel)] = "job_type" name = "job_type" required>
+
+                                  <mat-option *ngFor="let job_type of job_types" [value]="job_type">
+                                    {{job_type}}  
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              
+                            </div>
+                        
+
+                          <div>
+                              <mat-form-field  appearance="outline" style="width: 200px;" floatLabel="always">
+                                  <mat-label style="font-size: 17px;">Date Needed</mat-label>
+                                  <input required [(ngModel)]= "needed_date"
+                                  name = "needed_date" matInput [matDatepicker]="picker">
+                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+
+                          </div>
+                          <br>              
+                          <br>                    
+
+                          <mat-divider style="width: 92%; margin-left: 50px;"></mat-divider><br>
+
+                          <br>                    
+                          <div>
+                  <!--   
+
+                            <mat-slide-toggle [(ngModel)]="puplish_status" [checked]="puplish_status" name = "puplish_status" 
+                                              style="font-size: 12px; color: #777777;" >
+                                              
+                                              Publish on board
+                            </mat-slide-toggle>
+                  -->    
+                        </div>
+                        <br>                    
+
+                          <div>
+                          <button [disabled] ="!registerForm.form.valid" type = "submit"  mat-button color="primary" 
+                                  style="width: 300px; height: 50px;">
+                                  POST JOB
+                          </button>
+
+                          </div>
+                      </div>
+                  </form>
+                  <br/>
+
+        </mat-card> 
+    </div>
+</div>
+    

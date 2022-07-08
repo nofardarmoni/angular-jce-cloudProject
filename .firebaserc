@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "hr-mss-cloudcource-angular-jce"
+  },
+  "targets": {
+    "hr-mss-cloudcource-angular-jce": {
+      "hosting": {
+        "cloud-angular-jce": [
+          "hr-mss-cloudcource-angular-jce"
+        ]
+      }
+    }
+  }
+}

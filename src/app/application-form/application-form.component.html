@@ -1,0 +1,148 @@
+<div class="card-container" >
+    <h1 style="margin-top: 0px; font-weight: 300;font-size: 17px; color: #000000; padding: 0px; margin-bottom: 0px; text-transform: capitalize;
+    ">{{data.job_name}}</h1>
+    <h1 style="margin-top: 10px; font-weight: 300;font-size: 12px; color: #7c7c7c; padding: 0px;">    please fill out required fields and attach required attachments
+    </h1>
+
+    <form [formGroup]="form" >
+        <div>
+            <div>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-label style="font-size: 17px;">First Name</mat-label>
+                    <input matInput
+                    [(ngModel)]= first_name
+                    name = first_name
+                    formControlName="first_name" 
+
+                    required
+                    >
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="always" style="margin-left: 70px">
+                    <mat-label style="font-size: 17px;" >Last Name</mat-label>
+                    <input matInput
+                    [(ngModel)]= last_name
+                    name = last_name
+                    formControlName="last_name" 
+
+                    required
+                    >
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" floatLabel="always" style="margin-left: 0px; width: 472px;">
+                    <mat-label style="font-size: 17px;">Email</mat-label>
+                    <input matInput
+                    [(ngModel)]= email
+                    name = email
+                    type="email"
+                    formControlName="email" 
+
+                    required>
+                </mat-form-field>
+             
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-label style="font-size: 17px;">Phone number</mat-label>
+                    <input matInput 
+                    [(ngModel)]= phone
+                    name = phone
+                    formControlName="phone" 
+
+                    required >
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </div>
+
+
+            <br> <mat-divider style="width: 100%; margin-left: 0px;"></mat-divider><br>
+
+            <h1 style="margin-top: 6px; font-weight: 300;font-size: 12px; color: #7c7c7c; padding: 0px;">    please attach your profile photo and C.V. (PDF) </h1>
+
+            <div style="overflow: hidden; margin-left: 100px; margin-right: 100px; height: 300px;" >
+<div style="float: left;">
+    <button  mat-button (click)="imageInput.click()" color="primary" >
+        
+
+        <div *ngIf = "!image_url" >
+        <mat-icon style="margin: 0px; padding: 0px;" aria-label="Side nav toggle icon" >face</mat-icon><br> 
+
+        Attach Photo   
+    </div>
+    <div *ngIf = "image_url"> 
+    <img   style="width: 140px; height: 140px; margin: 0px; padding: 0px; margin-top: 4px; overflow: hidden;" src=  '{{image_url}}'><br><br> 
+</div>
+      </button>
+
+
+      <input hidden  type="file" #imageInput id="uploadFile1" (change)="uploadImage($event)" name="uploadFile" multiple="multiple"  
+   accept="image/*"  />
+    </div>
+
+
+<div style="float: right;">
+    <button  mat-button (click)="resumeInput.click()" color="primary" >
+        <div *ngIf = "!resume_url" >
+            <mat-icon style="margin: 0px; padding: 0px;" aria-label="Side nav toggle icon" >description</mat-icon><br> 
+            <div style="margin: 0px; padding: 0px;">Attach C.V. 
+            </div> 
+
+        </div>
+
+        <div *ngIf = "resume_url" style="color: #13965f;">
+            <mat-icon style="margin: 0px; padding: 0px;" aria-label="Side nav toggle icon" >check_circle</mat-icon><br> 
+            <div style="margin: 0px; padding: 0px;"> C.V. Attached
+            </div> 
+
+        </div>
+
+        
+
+      </button>
+
+      <input hidden  type="file" #resumeInput id="uploadFile2" (change)="uploadResume($event)" name="uploadFile" multiple="multiple"  
+                   accept="image/*"  />
+    </div>
+    <br>
+
+    <div style=" margin-top:140px;" *ngIf = "image_url">
+        <div [ngStyle]="{ 'color': color_confidence }" style="font-size: 12px; ">
+
+        face detected: {{image_confidence |number:'1.2-2'}}%
+    </div>
+
+        <div  [ngStyle]="{ 'color': color_sharpness }" style="font-size: 12px;"> 
+        image sharpness: {{image_sharpness |number:'1.2-2'}}%
+    </div>
+    
+       </div>
+</div>      
+
+
+
+
+             
+    
+             
+         
+         
+
+
+                
+              <mat-divider style="width: 100%; margin-left: 0px;margin-top:-100px;"></mat-divider><br>
+
+
+
+            
+            <div >
+             <button [disabled] ="!(this.form.valid && status) " type = "submit" (click)="addApplication()" mat-stroked-button color="primary" style="width: 300px; height: 50px; margin-left: 110px;">SEND APPLICATION</button>
+            </div>
+        </div>
+    </form>
+    <br/>
+
+
+
+</div> 

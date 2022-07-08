@@ -1,0 +1,62 @@
+<!-- HEADER -->       
+<mat-toolbar color="primary" *ngIf = "(authService.getUser()|async)" class="mat-elevation-z2">
+    <!-- LOGO -->       
+      <img src="../../assets/03.jpg" style="margin-left: 20px; ">
+        
+    <!-- NAV BOTOONS -->       
+      <button [disabled] = "true" mat-button style="width: 320px;" >
+        Dashboard
+      </button>  
+      <button  [disabled] = "false" mat-button (click)="this.router.navigate(['/jobs']);" style="width: 250px;">
+        Jobs
+      </button>
+      <button [disabled] = "false" mat-button (click)="this.router.navigate(['/candidates']);" style="width: 280px;" >
+        Candidates
+      </button> 
+      <button [disabled] = "true" mat-button style="width: 320px;" >
+        Analytics
+      </button> 
+      <button [disabled] = "true" mat-button style="width: 320px;" >
+        Employees
+      </button> 
+
+    <!-- SPACER -->       
+      <div style="display:flex;
+                  width:270px;
+                  justify-content: space-around;
+                  width: 100%;">
+      </div>
+
+
+    <!-- MANU LIST BUTTON -->       
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf = "(authService.getUser()|async)" style="margin-right: 20px;" >
+          <mat-icon style="color: #3b3b3d;" aria-label="Side nav toggle icon">account_circle</mat-icon>
+      </button>
+
+    <mat-menu #menu="matMenu" xPosition="before" >
+        <button style="width: 170px;" mat-menu-item disabled> 
+          <mat-icon  aria-label="Side nav toggle icon">settings</mat-icon>
+          Settings
+        </button>
+        <button style="width: 170px;" mat-menu-item (click)="logout();" > 
+          <mat-icon  aria-label="Side nav toggle icon">logout</mat-icon>
+          Logout
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="false" > 
+  </mat-sidenav>
+  <mat-sidenav-content>
+    
+    <!-- MAIN CONTENT (CHANGED BY ROUTING) -->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

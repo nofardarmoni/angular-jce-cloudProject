@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+  }
+
+
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
+  stroke: #000000;
+  font-size: 12px;
+}
